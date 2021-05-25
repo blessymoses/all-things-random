@@ -1,2 +1,1 @@
-# all-things-random
-random = "devops" lol:):)
+- [Ansible](https://github.com/blessymoses/all-things-random/tree/master/ansible)
