@@ -1,0 +1,19 @@
+- name: "Update nameserver entry into resolv.conf file on localhost"
+  hosts: localhost
+  vars:
+    car_model: "BMW M3"
+    country_name: Singapore
+    title: "Data Engineer"
+  tasks:
+    - name: "Update nameserver entry into resolv.conf file"
+      lineinfile:
+        path: /etc/resolv.conf
+        line: "nameserver {{ nameserver_ip }}"
+    - name: "Disable SNMP Port"
+      firewalld:
+        port: "{{ snmp_port }}"
+        permanent: true
+        state: disabled
+    - command: 'echo "My car''s model is {{ car_model }}"'
+    - command: 'echo "I live in the {{ country_name }}"'
+    - command: 'echo "I work as a {{ title }}"'

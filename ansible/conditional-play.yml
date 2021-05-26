@@ -1,0 +1,15 @@
+- name: "Execute a script on all web server nodes"
+  hosts: localhost
+  vars:
+    age: 25
+  tasks:
+    - service: "name=mysql state=started"
+      when: 'ansible_host == "server4.company.com"'
+    - command: 'echo "I am a Child"'
+      when: "age<18"
+    - command: 'echo "I am an Adult"'
+      when: "age>=18"
+    - shell: "cat /etc/resolv.conf"
+      register: command_output
+    - shell: 'echo "nameserver 10.0.250.10" >> /etc/resolv.conf'
+      when: 'command_output.stdout.find("10.0.250.10") == -1'
