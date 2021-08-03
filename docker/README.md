@@ -39,6 +39,11 @@ $ FLASK_ENV=development flask run
  * Restarting with stat
  * Debugger is active!
 ```
+### Verify the app
+```sh
+$ curl http://127.0.0.1:5000/
+$ curl http://127.0.0.1:5000/box
+```
 ## commands
 - To execute docker commands, without becoming root
 sudo usermod -aG docker blessy
