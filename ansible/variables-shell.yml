@@ -1,0 +1,17 @@
+- name: "store the output of shell command to a variable"
+  hosts: localhost
+  tasks:
+    - name: "create a file"
+      copy:
+        content: "Sample text"
+        dest: /tmp/testvar.conf
+    # - name: "debug"
+    #   debug:
+    #     msg: "Blessy | base64"
+    - name: "encode and register in a variable"
+      command: "echo $(/tmp/testvar.conf) | base64"
+      register: conf_base64
+    - name: "debug"
+      debug:
+        msg: "{{ conf_base64.stdout }}"
+    # - local_action: copy content={{ conf_base64.stdout }} dest=/tmp/testvar_base64

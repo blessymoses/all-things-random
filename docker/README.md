@@ -45,9 +45,22 @@ $ curl http://127.0.0.1:5000/
 $ curl http://127.0.0.1:5000/box
 ```
 ## commands
-- To execute docker commands, without becoming root
+- To execute docker commands, without becoming root:
+
+```sh
 sudo usermod -aG docker blessy
+```
 - docker version
+- docker-compose version
+- docker image ls
+- docker container ls
+- docker ps : list all running containers
+- docker ps -a : list all running and stopped containers
+- docker start container_id : To launch a stopped container
+- docker build --no-cache -t [image-name]:latest . : build the image
+- docker run -it [image-name]
+- docker run -it -p 5000:8888 todo-flask
+
 ```sh
 $ docker version
 Client: Docker Engine - Community
@@ -79,4 +92,4 @@ Server: Docker Engine - Community
   Version:          0.19.0
   GitCommit:        de40ad0
 ```
-- docker-compose version
+
